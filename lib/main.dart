@@ -39,7 +39,20 @@ class _MyHomePageState extends State<MyHomePage> {
         afterText = afterText + text[i];
       }
     }
+
+
+
+
+
+    var cursorPos = controller.selection;
+
     controller.text = afterText;
+
+    if (cursorPos.start > controller.text.length) {
+      cursorPos = new TextSelection.fromPosition(
+          new TextPosition(offset: controller.text.length));
+    }
+    controller.selection = cursorPos;
   }
 
   @override
